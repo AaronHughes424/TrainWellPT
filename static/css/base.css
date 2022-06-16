@@ -20,7 +20,7 @@ body {
 }
 
 .card {
-    background-color: rgb(248, 241, 246);
+    background-color: rgb(250, 231, 252);
     border-radius: 10px;
     box-shadow: 10px rgb(253, 251, 251);
 }
@@ -69,6 +69,10 @@ body {
 
 .border-black {
     border: 1px solid black !important;
+}
+
+.bg-black {
+    background: #000 !important;
 }
 
 /* -------------------------------- Media Queries */
