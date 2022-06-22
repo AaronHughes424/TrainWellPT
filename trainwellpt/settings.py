@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-o9m1=m_%p@6vae(-l4rvifd8sw8!6npk89*su_kl%dflbt#)pm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['train-well-pt.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -123,6 +123,10 @@ WSGI_APPLICATION = 'trainwellpt.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+if 'DATABASE_URL' in os.environ:
+    DATABASES  = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

@@ -1,0 +1,1 @@
+web: gunicorn trainwellpt.wsgi:application
