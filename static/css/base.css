@@ -123,6 +123,11 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
+.about-us {
+    text-align: center;
+    color: #000;
+}
+
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0; 
