@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
+from review.models import ProductReview
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -63,9 +64,19 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    reviews = ProductReview.objects.filter(
+        product=product).order_by('date_added')
+    previous_review = None
+    # Check if user has left a product review previous
+    if request.user.is_authenticated:
+        previous_review = ProductReview.objects.filter(
+            author=request.user, product=product,
+        ).exists()
 
     context = {
         'product': product,
+        'reviews': reviews,
+        'previous_review': previous_review,
     }
 
     return render(request, 'products/product_detail.html', context)
