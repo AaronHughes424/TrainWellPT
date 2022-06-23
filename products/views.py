@@ -141,10 +141,4 @@ def delete_product(request, product_id):
 def review_product(request):
     """ A view to retunr the index page """
 
-    product = get_object_or_404(Product, pk=product_id)
-
-    context = {
-        'product': product,
-    }
-    
-    return render(request, 'products/review_product.html', context)
+    return render(request, 'products/review_product.html')
