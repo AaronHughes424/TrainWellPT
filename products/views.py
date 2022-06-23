@@ -137,6 +137,7 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
+
 def review_product(request):
     """ A view to retunr the index page """
     
