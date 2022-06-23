@@ -28,19 +28,3 @@ class ReviewProduct(forms.ModelForm):
         fields = [
             'review_product',
         ]
-
-    def __init__(self, *args, **kwargs):
-        
-        super().__init__(*args, **kwargs)
-        labels = {
-            'review_content': 'Review',
-        }
-
-        self.fields['review_content'].widget.attrs['autofocus'] = True
-        for field in self.fields:
-            self.fields[field].label = labels[field] + ""
-            if self.fields[field].required:
-                placeholder = f'{labels[field]} *'
-            else:
-                placeholder = labels[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
