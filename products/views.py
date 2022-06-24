@@ -161,8 +161,9 @@ def review_product(request, product_id):
             else:
                 messages.error(
                     request, 'Failed to add your review')
+    template = 'products/review_product.html'
     context = {
         'form': form
     }
 
-    return render(request, context)
+    return render(request, template, context)
