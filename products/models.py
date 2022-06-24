@@ -41,3 +41,6 @@ class ProductReview(models.Model):
     date_added = models.DateField(
         auto_now_add=True, null=False, blank=False, editable=False
     )
+
+    def __str__(self):
+        return self.name
