@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category
-from .forms import ProductForm
+from .forms import ProductForm, ReviewProductForm
 
 # Create your views here.
 
@@ -142,6 +142,27 @@ def delete_product(request, product_id):
 
 @login_required
 def review_product(request, product_id):
-    """ Edit a product in the store """
+    """
+    A view to allow the user to add a review to a product
+    """
 
-    return render(request, 'products/review_product.html')
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ReviewProductForm(request.POST)
+            if form.is_valid():
+                review = form.save(commit=False)
+                review.product = product
+                review.user = request.user
+                review.save()
+                messages.success(request, 'Your review was successful')
+                return redirect(reverse('product_detail', args=[product.id]))
+            else:
+                messages.error(
+                    request, 'Failed to add your review')
+    context = {
+        'form': form
+    }
+
+    return render(request, context)
