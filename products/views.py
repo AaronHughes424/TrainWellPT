@@ -5,9 +5,10 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 
 from .models import Product, Category
-from .forms import ProductForm, ProductReview
+from .forms import ProductForm, ProductReviewForm
 
 # Create your views here.
+
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
@@ -32,7 +33,7 @@ def all_products(request):
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-            
+           
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(category__name__in=categories)
@@ -69,6 +70,7 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_product(request):
@@ -138,12 +140,6 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
-def review_product(request):
-    """ A view to retunr the index page """
-
-    return render(request, 'products/review_product.html')
-
-
 @login_required
 def review_product(request, product_id):
     """ Edit a product in the store """
@@ -151,15 +147,15 @@ def review_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
-        form = ProductReview(request.POST, request.FILES, instance=product)
+        form = ProductReviewForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
+            messages.success(request, 'Successfully reviewed product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to submit review. Please ensure the form is valid.')
     else:
-        form = ProductReview(instance=product)
+        form = ProductReviewForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
 
     template = 'products/review_product.html'
