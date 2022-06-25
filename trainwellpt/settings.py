@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'storages',
+    'user_updates',
 
     # Other
 
