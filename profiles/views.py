@@ -19,7 +19,7 @@ def profile(request):
             form.save()
             messages.success(request, 'Profile updated successfully')
 
-    form = UserProfileForm(instance=profile)
+    form = UserProfileForm(instance=profile), DiaryForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
