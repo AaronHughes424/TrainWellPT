@@ -86,6 +86,7 @@ def edit_diary(request, diary_id):
         if form.is_valid():
             form.save()
             messages.info(request, 'Review has been changed')
+            return redirect(reverse('profile', args=[diary.id]))
         else:
             messages.error(
                 request, 'Review edit failed, Please try again')
