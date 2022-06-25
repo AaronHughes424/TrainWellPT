@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -62,6 +62,7 @@ def add_diary(request):
                 diary.user = request.user
                 diary.save()
                 messages.success(request, 'Your review was successful')
+                return redirect(reverse('profile', args=[diary.id]))
             else:
                 messages.error(
                     request, 'Failed to add your review')
