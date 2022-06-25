@@ -62,7 +62,6 @@ def add_diary(request):
                 diary.user = request.user
                 diary.save()
                 messages.success(request, 'Your review was successful')
-                return render(request, 'profiles/profile.html')
             else:
                 messages.error(
                     request, 'Failed to add your review')
@@ -86,7 +85,6 @@ def edit_diary(request, diary_id):
         if form.is_valid():
             form.save()
             messages.info(request, 'Review has been changed')
-            return render(request, 'profiles/profile.html')
         else:
             messages.error(
                 request, 'Review edit failed, Please try again')
