@@ -33,3 +33,23 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+
+class Diary(models.Model):
+    """
+    Diary Model
+    """
+
+    class Meta:
+        ordering = ['-date_added']
+
+    user = models.ForeignKey(User,
+                             null=True,
+                             blank=True,
+                             on_delete=models.CASCADE)
+    title = models.CharField(max_length=254)
+    content = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

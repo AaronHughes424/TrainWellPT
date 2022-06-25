@@ -65,7 +65,7 @@
                                             {% endfor %}
                                         </ul>
                                     </td>
-                                    <td>${{ order.grand_total }}</td>
+                                    <td>£{{ order.grand_total }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -73,6 +73,61 @@
                 </div>
             </div>
         </div>
+        <div id="Diary" class="row">
+            <div class="col-12 col-md-10 col-lg-4 offset-lg-4 mt-5">
+                <h2 class="text-black font-weight-bold mt-5">Diary</h2>
+                {% if request.user.is_authenticated %}
+                    {% if edit %}
+                        <!-- Edit diary Form -->
+                        <form method="POST" action="{% url 'edit_diary' diary.id %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-right">
+                                <button class="btn btn-black rounded-0 text-uppercase mt-5" type="submit">Update Diary</button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <!--Diary Form -->
+                        <form method="POST" action="{% url 'add_diary' diary.id %}">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <div class="text-right">
+                                <button class="btn btn-black rounded-0 text-uppercase mt-5" type="submit">Submit Entry</button>
+                            </div>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <p class="small"> You must have an account or be logged in to leave a diary entry.</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-6 offset-lg-3">  
+                <!-- Showing all product reviews-->
+                {% for diary in diary.user %}
+                    <div class="card diary-container mt-5">
+                        <!-- Edit diary Button-->
+                        {% if diary.user == request.user or request.user.is_superuser %}
+                            <div class="card-head text-right">
+                                <a class="btn btn-black rounded-0 text-uppercase mt-5" href="{% url 'edit_diary' diary.id %}">
+                                    Edit Diary
+                                </a>
+                            </div>
+                        {% endif %}
+                        <div class="card-body text-black">
+                            <p class="card-title">{{ diary.title }}</p>
+                            <p class="card-text lead">{{ diary.content }}</p>
+                            <p class="small text-muted"> by {{ diary.user }} on {{ diary.date_added|date:"d-m-Y"}}</p>    
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="text-center mt-5">
+                        <p>No Diary Entry, start today!</p>
+                    </div>
+                {% endfor%}
+            </div>
+        </div> 
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
