@@ -137,8 +137,9 @@ input[name='q']::placeholder {
 
 .about-us {
     text-align: center;
-    width: 50%;
     color: #000;
+    margin-left: 15%;
+    max-width: 70%;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
