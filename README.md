@@ -130,30 +130,35 @@ SQLite was used during development and then Heroku Postgres in production.
 
 ## **The Skeleton Plane**
 
-I made some significant changes to my project, Some changes were more based on removing features I had planned to implement, and other changes were made after receiving feedback.
-
-[Shopping Bag Wireframes]()
+[Shopping Bag Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Bag-Web.jpg)
+[Shopping Bag Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Bag-Mob.jpg)
 
 - The shopping bag page has its layout changed mainly on mobile, whereas on desktop everything is more condensed so as not to take up the full width of the browser.
 - On smaller resolutions fitting everything within a 320px resolution became incredibly problematic. Everything felt squashed and condensed.
 - To remedy the smaller resolutions, items within the bag now show u vertically, with the image first, name, price, quantity input, and total for the product in that order. This change was well received from the feedback I got, and all in all, provides a better user experience.
 
-[All Products Wireframes]()
+[All Products Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Products-Web.jpg)
+[All Products Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Products-Mob.jpg)
 
 - I changed the number of products being shown horizontally from 4 to 3. This change was the leverage of how good I felt the product images were.
 - I removed the details and add to bag buttons, the image now acts as a link to the products details page.
 
-[Product Details Wireframes]()
+[Product Details Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/PDetails-Web.jpg)
+[Product Details Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/PDetails-Mob.jpg)
 
 - Small change on this page was to move the product description to below the product. I felt as though the amount of information on the right side of the page was causing a bad user experience. Moving the description below also allowed me to increase the font size to make it easier to read.
 
-[Account Page Wireframes]()
+[Account Page Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Profile-Web.jpg)
+[Account Page Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Profile-Mob.jpg)
 
-[Checkout Success Wireframes]()
+[Homepage Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Home-Web.jpg)
+[Homepage Success Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Home-Mob.jpg)
 
-[Register Wireframes]()
+[Wishlist Wireframes](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Wishlist-Web.jpg)
+[Wishlist Wireframes Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/Wishlist-Mob.jpg)
 
-[Log In Wireframes]()
+[Add/Edit Wirefream](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/AddEdit-Web.jpg)
+[Add/Edit Wirefream Mobile](https://github.com/AaronHughes424/TrainWellPT/blob/main/media/wireframes/AddEdit-Mob.jpg)
 
 ---
 
@@ -268,7 +273,15 @@ I made some significant changes to my project, Some changes were more based on r
 1. Tested the form validation worked correctly on each of the above browsers
     1. Results: The form correctly sent when the fields were completed as they should have been and did not when the fields had not been completed
 ---
+## **Bugs**
 
+- One of the major bugs I faced was when I was unable to push my migrations from git hub to deploy in heroku.
+    - This meant that no new models were being recognised so pulling a 500 server error.
+**Fix**
+-  I had to export the Database URL and then remigrate models.
+    - This fixed the issue and allowed me to continue with the development.
+
+---
 ## **Deployment**
 
 The master branch of this repository is the most current version and has been used for the deployed version of the site.
@@ -468,5 +481,25 @@ pip3 freeze > requirements.txt
 - Django have amazing documentation with a tutorial project and in depth explanations on core components.
 - [Django Documentation ](https://docs.djangoproject.com/en/3.2/)
 
+**Harry Dhillon**
+- [GitHub](https://github.com/Harry-Leepz/Nourish-and-Lift)
+    - Harrys MS4 project code for the review model and the Wishlist model gave me something to model my own project on.
+    - Harry was even willing to help me when I ran into some errors.
+
 ## **Aknowledgements**
+
+**Chris Zielinski**
+- The creator of the Boutique Ado project, The walkthrough of this project really helped put alot of code together for this project.
+
+**Harry Dhillon**
+- [GitHub](https://github.com/Harry-Leepz)
+    - A previous code institue student who helped me with the additonal models e.g. Wishlist and Review models.
+    - I was able to reach out to Harry Dhillon to help talk me through what was required for these model.
+    - Harry was also more than willing to share his code with me to help me complete this project.
+
+**Antonio Rodriguez**
+- Massive appreciation for my mentor supplied by the code institute.
+    - Always so helpful even when I am in a panic managing to come up with a quick fix for my code when pulling up errors.
+    - Antonio provided a fix for when I was unable to push my migrations to my deployed server.
+
 
