@@ -255,7 +255,18 @@ I made some significant changes to my project, Some changes were more based on r
 
 ## **Testing**
 
+1. [HTMLValidation](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftrain-well-pt.herokuapp.com%2F) W3 validator used to check HTML validity.
 
+1. [CSSValidation](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Ftrain-well-pt.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+1. Tested the website on the Google Chrome
+    1. Results: The website was responsive and the elements performed in the way they were intended to
+1. Tested the website on the Microsoft Edge browser
+    1. Results: The website was responsive and the elements performed in the way they were intended to
+1. Tested the website on the Firefox browser
+    1. Results: The website was responsive and the elements performed in the way they were intended to
+1. Tested the form validation worked correctly on each of the above browsers
+    1. Results: The form correctly sent when the fields were completed as they should have been and did not when the fields had not been completed
 ---
 
 ## **Deployment**
