@@ -277,13 +277,14 @@ SQLite was used during development and then Heroku Postgres in production.
 
 - One of the major bugs I faced was when I was unable to push my migrations from git hub to deploy in heroku.
     - This meant that no new models were being recognised so pulling a 500 server error.
----
+
 **Fix**
     -  I had to export the Database URL and then remigrate models.
     - This fixed the issue and allowed me to continue with the development.
 
-- Another bug that I face was on the stripe website where my webhooks were returning a server 500 error which I was advised by 
-    my mentor that is an issue with the stripe website.
+- A bug I also faced was with the Stripe Webhook handler where it was receieved a server 500 error.
+    - After being reviewed along with my mentor I was advised that it looked like a problem
+    - through stripe itself and not the code.
 
 ---
 ## **Deployment**
